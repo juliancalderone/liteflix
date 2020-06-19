@@ -7,8 +7,7 @@ El objetivo del mismo es almacenar las peliculas creadas a traves del front, des
 Instrucciones:
 1) Clonar el repositorio
 2) Dentro de la carpeta api, ingresar:  
-npm install
-npm start
+npm install / npm start
 
 La base de datos se puede visualizar con algun gestor como Robomongo (https://robomongo.org/)
 
