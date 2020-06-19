@@ -1,0 +1,27 @@
+ <section class="now-playing" *ngIf="npMovie">
+   <div class="gradient"></div>
+   <div class="bg" [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/original/' + npMovie.backdrop_path + ')',
+    'background-size': 'cover',
+    'background-position':'top', 'background-color': 'black'}">
+     <div class="container">
+       <div class="producer">
+         <h5>Original de <span>Liteflix</span></h5>
+       </div>
+       <h1 class="movie-title">{{ npMovie.title }}</h1>
+       <div class="buttons-wrapper mt-4">
+         <button class="lf-btn">
+           <img src="assets/play-button.svg" alt="">
+           <span>Reproducir</span>
+         </button>
+         <button id="my-list" class="lf-btn" routerLink="my-movies">
+           <img src="assets/plus.svg" alt="">
+           <span>Mi lista</span>
+         </button>
+       </div>
+       <div class="overview mt-4">
+         <h5>Overview</h5>
+         <p>{{ npMovie.overview }}</p>
+       </div>
+     </div>
+   </div>
+ </section>

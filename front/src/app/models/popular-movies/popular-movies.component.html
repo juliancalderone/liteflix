@@ -1,0 +1,40 @@
+<section class="popular-movies">
+  <div class="container">
+    <h5>Populares de liteflix</h5>
+    <div class="row">
+      <div class="col-lg-3 col-6 mt-1" *ngFor="let movie of fourMovies">
+        <div class="img-wrapper" [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w500/' + movie.poster_path + ')',
+    'background-size': 'cover',
+    'background-position':'center', 'background-color': 'black'}"> </div>
+        <!-- <img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path}}" alt=""> -->
+        <div class="popular-movie-info">
+          <div class="play-button mb-2">
+            <img src="assets/play.svg" alt="">
+          </div>
+          <div class="title-like">
+            <div class="title">
+              <h1>{{ movie.title }}</h1>
+            </div>
+            <div class="like">
+              <img src="assets/facebook.svg" alt="">
+            </div>
+          </div>
+
+          <div class="rating">
+            <img src="assets/star.svg" alt="">
+            <p>{{ movie.vote_average}} / 10</p>
+          </div>
+          <div class="votes">
+            <small>
+              {{ movie.vote_count }} votes
+              <!-- Género -->
+            </small>
+          </div>
+          <div class="arrow">
+            <img src="assets/down-arrow.svg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,55 @@
+.my-movies {
+  background: black;
+  height: 100vh;
+
+  .h-navbar {
+    height: 100px;
+  }
+
+  .container {
+    h1 {
+      color: #eaeaea;
+    }
+
+    .row {
+      .col-lg-3 {
+        .my-movie-title {
+          color: #eaeaea;
+          text-transform: uppercase;
+          font-weight: bold;
+          margin-bottom: 0;
+        }
+
+        .cover-movie {
+          width: 255px;
+          height: 155px;
+        }
+
+        .category {
+          margin-top: 10px;
+          text-transform: uppercase;
+          font-size: 14px;
+          color: #eaeaea;
+
+        }
+      }
+    }
+
+  }
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 720px) {
+  .my-movies {
+    height: auto;
+
+    .container {
+      .row {
+        .col-lg-3 {
+          .cover-movie {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

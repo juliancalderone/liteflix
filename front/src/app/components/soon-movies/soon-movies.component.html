@@ -1,0 +1,33 @@
+<section class="soon-movies">
+  <div class="container">
+    <div class="movies-wrapper">
+      <h5>Próximamente</h5>
+      <div class="row">
+        <div class="col-lg-3 col-sm-12" *ngFor="let movie of fourMovies">
+          <img src="https://image.tmdb.org/t/p/w400/{{movie.backdrop_path}}" alt="">
+          <div class="info">
+            <div class="top-icons">
+              <img class="mr-2" src="assets/plus-circle.svg" alt="">
+              <img src="assets/facebook.svg" alt="">
+            </div>
+            <div class="play-movie">
+              <img src="assets/play.svg" alt="">
+            </div>
+            <div class="desc-movie">
+              <div class="item">
+                <p> <strong>{{ movie.title }}</strong></p>
+                <span *ngIf="movie.adult===true">+16</span>
+                <span *ngIf="movie.adult===false">AAP</span>
+              </div>
+              <div class="rating">
+                <img src="assets/star.svg" alt="">
+                <p>{{ movie.vote_average}} / 10</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

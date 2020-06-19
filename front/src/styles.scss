@@ -1,0 +1,19 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~@ng-select/ng-select/themes/material.theme.css";
+
+html,
+body {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.ng-dropdown-panel {
+    border-radius: 10px !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url('assets/menu.svg') !important;
+    &:focus {
+        outline: none;
+    }
+}
+

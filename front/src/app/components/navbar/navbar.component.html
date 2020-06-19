@@ -1,0 +1,171 @@
+<section class="liteflix-navbar">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <button id="show-sidenav" (click)="drawer.toggle()" class="navbar-toggler" type="button" data-toggle="collapse"
+        data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="logo">
+        <a class="navbar-brand" href="#">
+          <img src="assets/liteflix.svg" alt="">
+        </a>
+      </div>
+
+      <div class="custom-sidenav">
+        <mat-drawer #drawer>
+          <ul>
+            <li class="user-sidenav"><img src="assets/user.svg" alt="">Ernesto Garmendia</li>
+            <li>Cambiar usuario</li>
+            <li>Configuración</li>
+            <li>Ayuda</li>
+            <li class="bell">
+              <img src="assets/bell.svg" alt="">
+              Novedades
+            </li>
+            <li class="bell">
+              Series
+            </li>
+            <li class="bell">
+              Películas
+            </li>
+            <li routerLink="my-movies" class="bell">
+              Mi lista
+            </li>
+            <li class="bell">
+              Niños
+            </li>
+            <li (click)="openModal(template)" class="add-movie">
+              <img src="assets/plus.svg" alt="">
+              Agregar película
+            </li>
+            <li class="logout">
+              <strong>Logout</strong>
+            </li>
+          </ul>
+
+        </mat-drawer>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto mt-3">
+          <li class="nav-item">
+            <a class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Series</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Películas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Agregados recientemente</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="is-active" routerLink="my-movies">Mi lista</a>
+          </li>
+          <li class="nav-item">
+            <div class="oval" (click)="openModal(template)">
+              <p class="mb-0">+ </p>
+            </div>
+          </li>
+
+        </ul>
+        <div class="users mt-3">
+          <span class="navbar-text text-white">
+            Niños
+          </span>
+          <span class="navbar-text">
+            <img src="assets/bell.svg" alt="">
+          </span>
+          <span class="navbar-text">
+            <img src="assets/user.svg" alt="">
+            <!-- <a href="">
+              <img id="down-arrow" class="ml-2" src="assets/down-arrow.svg" alt="">
+            </a> -->
+            <div class="btn-group" dropdown>
+
+              <a id="button-basic" dropdownToggle>
+                <img id="down-arrow" class="ml-2" src="assets/down-arrow.svg" alt="">
+              </a>
+
+              <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu"
+                aria-labelledby="button-basic">
+                <div class="top-triangle"></div>
+                <li class="menuitem" role="menuitem">
+                  <a class="dropdown-item first" href="#">
+                    <img src="assets/user.svg" alt="">Ernesto G...
+                  </a>
+                </li>
+                <li class="menuitem" role="menuitem">
+                  <a class="dropdown-item" href="#">
+                    <img src="assets/user.svg" alt=""> User 03
+                  </a>
+                </li>
+                <li class="menuitem" role="menuitem">
+                  <a class="dropdown-item" href="#">
+                    <img src="assets/user.svg" alt=""> User 04
+                  </a>
+                </li>
+                <li role="menuitem"><a class="dropdown-item text-dark" href="#">Configuración</a>
+                </li>
+                <li class="divider dropdown-divider"></li>
+                <li role="menuitem"><a class="dropdown-item text-dark" href="#">Ayuda</a>
+                </li>
+                <li class="divider dropdown-divider"></li>
+                <li role="menuitem"><a class="dropdown-item text-dark" href="#"><strong>Logout</strong></a>
+                </li>
+              </ul>
+            </div>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</section>
+
+<ng-template #template>
+  <div class="close-modal" (click)="modalRef.hide()">
+    <p class="mb-0">x</p>
+  </div>
+  <div class="modal-body">
+    <div class="success-movie" *ngIf="message">
+      <div class="tick">
+        ¡Pelicula creada con éxito!
+        <img src="assets/tick.svg" alt="">
+      </div>
+    </div>
+    <div *ngIf="!message">
+      <form [formGroup]="movieForm" (submit)="uploadMovie(title, category)">
+        <input formControlName="photoInput" type="file" class="d-none" (change)="onPhotoSelected($event)" #photoInput>
+        <div class="attachment">
+          <img [src]="photoSelected || 'assets/clip.svg'" style="height: 100px;" class="img-fluid" alt="No image"
+            (click)="photoInput.click()">
+          <span *ngIf="!photoSelected">Agregar foto para tu película</span>
+        </div>
+        <div class="row mt-3">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <span class="movie-title">Película</span>
+              <input type="text" formControlName="title" class="custom-input" #title>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <span class="movie-title">Categoría</span>
+              <input type="text" formControlName="category" class="custom-input" #category>
+              <!-- <ng-select
+                formControlName="category" [items]="categories" 
+               #category (selectionChanges)="handleStatusChange($event)">
+              </ng-select> -->
+
+
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-block mt-1" [disabled]="!movieForm.valid || loadingMovie">
+          Agregar pelicula
+          <img class="loading" *ngIf="loadingMovie" src="assets/loading-spinner.svg" alt="">
+        </button>
+      </form>
+    </div>
+  </div>
+</ng-template>
