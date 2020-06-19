@@ -12,7 +12,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { NowPlayingComponent } from './components/now-playing/now-playing.component';
 import { SoonMoviesComponent } from './components/soon-movies/soon-movies.component';
 import { HomeComponent } from './components/home/home.component';
-import { PopularMoviesComponent } from './models/popular-movies/popular-movies.component';
+import { PopularMoviesComponent } from './components/popular-movies/popular-movies.component';
+
 
 
 // dropdown
