@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit {
 
   public loadingMovie;
   public message;
+  public errorMessage;
   modalRef: BsModalRef;
   file: File;
 
@@ -76,9 +77,14 @@ export class NavbarComponent implements OnInit {
             location.reload();
           }, 2000);
         },
-        (err) => console.log(err)
+        (err) => this.handleError()
       );
     return false;
+  }
+
+  public handleError() {
+    this.loadingMovie = false;
+    alert('Verificar api en puerto 3000');
   }
 
   ngOnInit() {
