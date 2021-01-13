@@ -1,7 +1,7 @@
 # liteflix
 Catalogo de películas online utilizando la api de https://www.themoviedb.org/
 
-Mini-backend desarrollado en Typescript con Nodejs y Mongodb. 
+Backend desarrollado en Typescript con Nodejs y Mongodb. 
 El objetivo del mismo es almacenar las peliculas creadas a traves del front, desarrollado en Angular 6. 
 
 Instrucciones:
